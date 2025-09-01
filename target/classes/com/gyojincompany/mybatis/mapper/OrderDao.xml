@@ -15,5 +15,10 @@
 		SELECT * FROM springdb.user
 	</select>
 	
+	<!-- 특정 아이디 유저 가져오기 -->
+	<select id="userSearchDao" resultType="com.gyojincompany.mybatis.dto.UserDto" >
+		SELECT * FROM springdb.user WHERE userid = #{param1}	
+	</select>
+	
 </mapper>    
     

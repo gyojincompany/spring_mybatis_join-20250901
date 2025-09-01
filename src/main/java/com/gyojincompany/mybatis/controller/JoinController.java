@@ -36,5 +36,14 @@ public class JoinController {
 		return "orderlist";
 	}
 	
+	@RequestMapping(value = "/usersearch")
+	public String userid(HttpServletRequest request, Model model ) {
+		
+		OrderDao orderDao = sqlSession.getMapper(OrderDao.class);
+		model.addAttribute("user", orderDao.userSearchDao("tiger"));
+		
+		return "usersearch";
+	}
+	
 
 }
