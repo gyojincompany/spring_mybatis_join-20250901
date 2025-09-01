@@ -63,6 +63,24 @@ public class JoinController {
 		return "userinfo2";
 	}
 	
+	@RequestMapping(value = "/userorder")
+	public String userorder(HttpServletRequest request, Model model ) {
+		
+		OrderDao orderDao = sqlSession.getMapper(OrderDao.class);
+		model.addAttribute("userOrder", orderDao.userOrderListDao("tiger"));
+		
+		return "userorder";
+	}
+	
+	@RequestMapping(value = "/alluserorder")
+	public String alluserorder(HttpServletRequest request, Model model ) {
+		
+		OrderDao orderDao = sqlSession.getMapper(OrderDao.class);
+		model.addAttribute("allUserOrders", orderDao.AllUserOrderLitsDao()); //List<UserDto> 타입
+		
+		return "alluserorder";
+	}
+	
 	
 	
 

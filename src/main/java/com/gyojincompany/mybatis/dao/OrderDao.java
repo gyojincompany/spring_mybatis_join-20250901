@@ -16,4 +16,9 @@ public interface OrderDao {
 	public UserDto userSearchDao(String userid); //특정 유저 아이디로 회원 가져오기
 	public UserIdInfoDto userInfoDao(String userid); //특정 유저 아이디로 유저의 회원 세부 정보 가져오기
 	public UserDto userInfoMapDao(String userid); //userInfoDao->spring 프레임워크 형식으로 수정
+	public UserDto userOrderListDao(String userid); //특정 유저의 주문 리스트 가져오기(spring 프레임워크 형식으로)
+	public List<UserDto> AllUserOrderLitsDao(); //모든 유저의 주문 리스트 가져오기
+	
+	
+	
 }

@@ -47,6 +47,32 @@
 				INNER JOIN springdb.userinfo i ON u.userid = i.userid
 					WHERE u.userid = #{param1}
 	</select>
+	
+	<!-- user:order 1:N관계 매핑 -->
+	<resultMap type="com.gyojincompany.mybatis.dto.UserDto" id="userWithOrder">
+		<id property="userid" column="userid" /> <!-- user 테이블의 기본키 셋팅 -->
+		<result property="username"  column="username" /> <!-- user 테이블의 나머지 필드 셋팅 -->
+		
+		<!-- order List 매핑 -->
+		<collection property="orderDtos" ofType="com.gyojincompany.mybatis.dto.OrderDto">
+			<id property="orderid" column="orderid" /> <!-- order 테이블의 기본키 셋팅 -->
+			<result property="ordername" column="ordername" /> <!-- order 테이블의 나머지 필드 셋팅 -->
+			<result property="userid" column="userid" /> <!-- order 테이블의 나머지 필드 셋팅 -->
+		</collection>
+	</resultMap>
+	
+	<select id="userOrderListDao" resultMap="userWithOrder">
+		SELECT u.userid, u.username, o.orderid, o.ordername 
+			FROM springdb.user u
+				INNER JOIN springdb.order o ON u.userid = o.userid
+					WHERE u.userid = #{param1} 
+	</select>
+	
+	<select id="AllUserOrderLitsDao" resultMap="userWithOrder">
+		SELECT u.userid, u.username, o.orderid, o.ordername 
+			FROM springdb.user u
+				INNER JOIN springdb.order o ON u.userid = o.userid							
+	</select>
 		
 </mapper>    
     
