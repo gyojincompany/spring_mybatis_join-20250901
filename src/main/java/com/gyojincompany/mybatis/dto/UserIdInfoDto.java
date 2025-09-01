@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserIdInfoDto {
 	
 	private String userid; //기본키
-	private String username;
+	private String username;	
 	
-	private UserInfoDto userInfo; //유저의 세부 정보를 멤버로 저장(1:1 관계)
-
+	private String useraddress; //고객의 주소
+	private String userphone; //고객의 전화번호
 }
